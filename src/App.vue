@@ -10,7 +10,7 @@
 
 <script>
 import FilmsList from './components/FilmsList.vue';
-import FilmSelect from './components/FilmSelect.vue';
+import FilmItem from './components/FilmItem.vue';
 import FilmDetails from './components/FilmDetails.vue';
 import {eventBus} from './main';
 
@@ -29,7 +29,7 @@ export default {
     .then(res => res.json())
     .then(films => this.films = films)
 
-    eventBus.$on('film-selected', (film) => {
+    eventBus.$on('film-item', (film) => {
       this.selectedFilm = film;
     })
   },
@@ -42,8 +42,16 @@ export default {
 </script>
 
 <style>
+  h1 {
+    padding: 0px 75px;
+    color: red;
+  }
   .main-container {
     display: flex;
     justify-content: space-between;
+    width: 90%;
+    margin: 0 auto;
+    background-color: black;
+    color: gold;
   }
 </style>

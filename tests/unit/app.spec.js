@@ -18,8 +18,16 @@ describe('App', () => {
     expect(wrapper.vm.films).toHaveLength(2)
   });
 
-  xit ('should have a director', () => {
-    
+  it ('should have a director', () => {
+    expect(wrapper.vm.films[0].director).toHaveLength(14)
+  });
+
+  it ('should have a director', () => {
+    expect(wrapper.vm.films[1].director).toMatch("Isao Takahata")
+  });
+
+  it ('should have a release date', () => {
+    expect(wrapper.vm.films[0].release_date).toContain("1986")
   })
 });
 
