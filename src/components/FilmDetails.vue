@@ -10,7 +10,7 @@
 
 <script>
 export default {
-    name: 'film-detail',
+    name: 'film-details',
     props: ['film']
 }
 
@@ -49,5 +49,12 @@ export default {
     font-weight: bolder;
     font-style: italic;
     color: black;
+  }
+
+  #fav-button {
+    background-color: black;
+    border: solid red 2px;
+    color: gold;
+    margin: 42px 0px 5px 240px;
   }
 </style>

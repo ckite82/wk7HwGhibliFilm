@@ -3,8 +3,10 @@
     <h1>Ghibli Films</h1>
     <div class="main-container">
       <films-list :films="films"></films-list>
-      <film-detail :film='selectedFilm'></film-detail>
+      <film-details :film='selectedFilm'></film-details>
     </div>
+      <button v-if="!favFilms.includes(selectedFilm)" v-on:click="addToFavs">Add To Wishlist</button>
+      <fav-films :favFilms="favFilms"></fav-films>
   </div>
 </template>
 
@@ -12,7 +14,9 @@
 import FilmsList from './components/FilmsList.vue';
 import FilmItem from './components/FilmItem.vue';
 import FilmDetails from './components/FilmDetails.vue';
+import FavFilms from './components/FavFilms.vue';
 import {eventBus} from './main';
+
 
 export default {
   name: 'App',
@@ -20,7 +24,8 @@ export default {
   data(){
     return {
       films: [],
-      selectedFilm: null
+      selectedFilm: null,
+      favFilms: []
     };
   },
 
@@ -34,9 +39,18 @@ export default {
     })
   },
 
+  methods:{
+    addToFavs: function() {
+      if(this.favFilms.indexOf(this.selectedFilm) === -1) {
+        this.favFilms.push(this.selectedFilm);
+      }
+    }
+  },
+
   components:{
     "films-list": FilmsList,
-    "film-detail": FilmDetails
+    "film-details": FilmDetails,
+    "fav-films": FavFilms
   }
 }
 </script>
